@@ -2,10 +2,10 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "SpecCheck Documentation",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/dark.png",
+    "light": "/logo/light.png"
   },
-  "favicon": "/favicon.png",
+  "favicon": "/purple.png",
   "colors": {
     "primary": "#7159CF",
     "light": "#F3F0FA",
@@ -13,7 +13,7 @@
   },
   "topbarLinks": [],
   "topbarCtaButton": {
-    "name": "SpecCheck",
+    "name": "Main Site",
     "url": "https://speccheckrx.com"
   },
   "anchors": [
