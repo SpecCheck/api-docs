@@ -1,0 +1,72 @@
+---
+title: "Get Options"
+api: "POST https://api.speccheckrx.com/v1/options"
+description: "This endpoint fetches the options for a given lab."
+---
+
+### Body
+
+<ParamField body="lab_name" type="string" required="true">
+  "Cherry Optical Lab"
+</ParamField>
+
+<ParamField body="account_number" type="string" required="true">
+</ParamField>
+
+<ParamField body="material" type="string">
+  If material is set and lens_style is not, then lens_styles are returned. If material is set and lens_style is also set, then addons, lens_type, and tints are returned.
+</ParamField>
+
+<ParamField body="lens_style" type="string">
+  Material must be set if lens_style is set.
+</ParamField>
+
+### Response
+
+<ResponseField name="job_types" type="list of strings">
+  List of valid job_types. Returned if material and lens_style are NOT set.
+</ResponseField>
+
+<ResponseField name="materials" type="list of strings">
+  List of materials. Returned if material and lens_style are NOT set.
+</ResponseField> 
+
+<ResponseField name="suggested_values" type="dict">
+  Suggested values are set by the lab and used for display purposes as shortcuts. Returned if material and lens_style are NOT set.
+</ResponseField> 
+
+<ResponseField name="services" type="list of strings">
+  List of available services. Returned if material and lens_style are NOT set.
+</ResponseField> 
+
+<ResponseField name="lens_styles" type="list of strings">
+ List of valid lens_styles. Returned if material is set and lens_style is NOT set. 
+</ResponseField>
+
+<ResponseField name="lens_type" type="string">
+ Lens type of the lens_style passed in. Returned if both material and lens_style are set.
+</ResponseField>
+
+<ResponseField name="tints" type="list of strings">
+ Valid tint combinations. Returned if both material and lens_style are set.
+</ResponseField>
+
+
+<ResponseField name="addons" type="object">
+
+Possible addons. Returned if both material and lens_style are set.
+
+<Expandable title="Addons">
+
+<ResponseField name="intrin_colors" type="list of strings">
+List of valid instrinsic property + color combos
+</ResponseField>
+
+<ResponseField name="coats" type="list of strings">
+ List of valid coatings.
+</ResponseField>
+
+</Expandable>
+
+</ResponseField>
+
