@@ -1,0 +1,235 @@
+---
+title: "Create Order"
+api: "POST https://api.speccheckrx.com/v1/orders/create_order"
+description: "This endpoint creates an order"
+---
+
+### Body
+
+<ParamField body="order" type="order">
+<Expandable title="order">
+
+<ParamField body="lab" type="string" required="true">
+  "Cherry Optical Lab"
+</ParamField>
+
+<ParamField body="account_number" type="string" required="true">
+</ParamField>
+
+<ParamField body="job_type" type="string" required="true">
+</ParamField>
+
+<ParamField body="orig_order_relation" type="string">
+  Only required for orders that are "Pair 50" or "Redo"
+</ParamField>
+
+<ParamField body="original_order_id" type="string">
+  Only required if orig_order_relation is set
+</ParamField>
+
+<ParamField body="redo_reason" type="string">
+  Only required if orig_order_relation is 'Redo'
+</ParamField>
+
+<ParamField body="first_name" type="string" required="true">
+  Patient's first name.
+</ParamField>
+
+<ParamField body="last_name" type="string" required="true">
+  Patient's last name.
+</ParamField>
+
+<ParamField body="email" type="string">
+  Patient's email.
+</ParamField>
+
+<ParamField body="services" type="list of strings">
+</ParamField>
+
+<ParamField body="special_instructions" type="string">
+</ParamField>
+
+<ParamField body="neurolens_id" type="string">
+  Required if lens is Neurolens.
+</ParamField>
+
+<ParamField body="rx_left" type="object">
+
+
+<Expandable title="RxEye">
+
+  <ParamField body="sphere" type="float">
+  </ParamField>
+
+  <ParamField body="pd" type="float">
+  </ParamField>
+
+  <ParamField body="cylinder" type="float">
+  </ParamField>
+
+  <ParamField body="axis" type="int">
+  </ParamField>
+
+  <ParamField body="near_pd" type="float">
+  </ParamField>
+
+  <ParamField body="addition" type="float">
+  </ParamField>
+
+  <ParamField body="seg_height" type="float">
+  </ParamField>
+
+  <ParamField body="optical_center_height" type="int">
+  </ParamField>
+
+  <ParamField body="io_prism" type="dict">
+
+  <Expandable title="Prism">
+
+  <ParamField body="power" type="float">
+  </ParamField>
+
+  <ParamField body="direction" type="string">
+    One of "D", "I", "O", "U"
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="ud_prism" type="dict">
+<Expandable title="Prism">
+
+  <ParamField body="power" type="float">
+  </ParamField>
+
+  <ParamField body="direction" type="string">
+    One of "D", "I", "O", "U"
+  </ParamField>
+
+</Expandable>
+</ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="rx_right" type="RxEye">
+  See rx_left for RxEye schema
+</ParamField>
+
+<ParamField body="lens" type="object">
+
+The lens object
+
+<Expandable title="Lens">
+
+<ParamField body="material" type="string" required="true">
+</ParamField>
+
+<ParamField body="style" type="string" required="true">
+</ParamField>
+
+<ParamField body="base_curve" type="float">
+</ParamField>
+
+<ParamField body="intrin_color" type="string">
+</ParamField>
+
+<ParamField body="coats" type="list of strings">
+</ParamField>
+
+<ParamField body="tint" type="string">
+</ParamField>
+
+<ParamField body="tint_instruction" type="string">
+</ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="frame" type="object">
+
+The frame object
+
+<Expandable title="Frame">
+
+<ParamField body="job_type" type="string" required="true">
+  Frame handling option. Must be one of "N" for "Frame to Come", "S" for "Supply with Prescription", or "L" for "Lens Only".
+</ParamField>
+
+<ParamField body="model" type="string" required="true">
+</ParamField>
+
+<ParamField body="sku" type="string">
+</ParamField>
+
+<ParamField body="manufacturer" type="string" required="true">
+</ParamField>
+
+<ParamField body="material" type="string" required="true">
+</ParamField>
+
+<ParamField body="edge" type="string">
+    Frame Edge option. Must be one of "HB" for "Hide Bevel", "GD" for "Grooved", "D4" for "Rimless Drilled", or "SHLF" for "Step Bevel".
+</ParamField>
+
+<ParamField body="eye_size" type="int" required="true">
+</ParamField>
+
+<ParamField body="bridge" type="int" required="true">
+</ParamField>
+
+<ParamField body="color" type="str">
+</ParamField>
+
+<ParamField body="temple" type="int">
+</ParamField>
+
+<ParamField body="lens_ed" type="float">
+</ParamField>
+
+<ParamField body="a" type="float">
+</ParamField>
+
+<ParamField body="b" type="float">
+</ParamField>
+
+<ParamField body="vertex" type="float">
+</ParamField>
+
+<ParamField body="pantoscopic_tilt" type="int">
+</ParamField>
+
+<ParamField body="wrap" type="int">
+</ParamField>
+
+</Expandable>
+</ParamField>
+
+</Expandable>
+</ParamField>
+
+<ParamField body="force_reprocess" type="boolean">
+  Defaults to False. Mark true if you want to ignore the idempotency key check. This should not be set unless there is a legitimate reason.
+</ParamField>
+
+<ParamField body="tracing" type="file">
+  The tracing file if applicable. Needs to be some sort of text file or .oma file.
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful.
+</ResponseField>
+
+<ResponseField name="order_id" type="string">
+The SpecCheck order_id
+</ResponseField>
+
+<ResponseField name="is_idempotent_response" type="boolean">
+True if this was an idempotent response.
+</ResponseField>
+
+<ResponseField name="error" type="string">
+Error message if applicable.
+</ResponseField> 

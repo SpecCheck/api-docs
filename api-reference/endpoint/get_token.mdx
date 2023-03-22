@@ -1,37 +1,31 @@
 ---
 title: "Get Token"
-api: "POST https://api.speccheck.com/v1/oauth/token"
-description: "This endpoints returns an access token valid for 24 hours."
+api: "POST https://api.speccheckrx.com/v1/oauth/token"
+description: "This endpoints returns an access token."
 ---
 
 ### Body
 
-<ParamField body="data_source_provided_id" type="string">
-  The data source ID provided in the data tab may be used to identify the data
-  source for the user group
+<ParamField body="client_id" type="string">
+  The client ID that identifies your application.
 </ParamField>
 
-<ParamField body="current_token" type="string">
-  This is the current user group token you have for the user group you want to
-  delete
+<ParamField body="client_secret" type="string">
+  The client secret for your application.
 </ParamField>
 
 ### Response
 
-<ResponseField name="success" type="number">
-  Indicates whether the call was successful. 1 if successful, 0 if not.
+<ResponseField name="token" type="string">
+  The access token.
 </ResponseField>
 
 <RequestExample>
 
 ```bash Example Request
-curl --location --request DELETE 'https://api.mintlify.com/api/user' \
---header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
---data-raw '{
-		"user_group_id": "example_1"
-		"current_token": "abcdef"
-}'
+curl -H 'Content-Type: application/json' \
+-d '{"client_id":"your_client_id", "client_secret":"your_client_secret"}' \
+-X POST https://api.specchecrx.com/v1/oauth/token
 ```
 
 </RequestExample>
@@ -40,7 +34,7 @@ curl --location --request DELETE 'https://api.mintlify.com/api/user' \
 
 ```json Response
 {
-  "success": 1
+  "token": "your_access_token"
 }
 ```
 
