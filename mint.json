@@ -37,6 +37,9 @@
       ]
     }
   ],
+  "api": {
+    "baseUrl": ["api-staging.speccheckrx.com", "api.speccheckrx.com"]
+  },
   "footerSocials": {
     "github": "https://github.com/SpecCheckrx",
     "linkedin": "https://www.linkedin.com/company/speccheck"

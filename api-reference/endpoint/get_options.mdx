@@ -1,20 +1,36 @@
 ---
 title: "Get Options"
-api: "POST https://api.speccheckrx.com/v1/options"
 description: "This endpoint fetches the options for a given lab."
 ---
+```
+POST https://api.speccheckrx.com/v1/options
+```
+<Note>The response changes based on what is inputted. `lab_name` and `account_number` are always required.</Note>
 
+<AccordionGroup>
+  <Accordion title="Getting Job Types, Materials, Services, and Suggestions">
+    `material` and `lens_style` should not be set.
+  </Accordion>
+
+  <Accordion title="Getting Lens Styles for a Given Material">
+    `material` is set, `lens_style` should not be set.
+  </Accordion>
+
+  <Accordion title="Getting All Add-Ons for a Given Material and Lens Style">
+    `material` and `lens_style` should both be set to return ``
+  </Accordion>
+</AccordionGroup>
 ### Body
 
 <ParamField body="lab_name" type="string" required="true">
-  "Cherry Optical Lab"
+  `Cherry Optical Lab`
 </ParamField>
 
 <ParamField body="account_number" type="string" required="true">
 </ParamField>
 
 <ParamField body="material" type="string">
-  If material is set and lens_style is not, then lens_styles are returned. If material is set and lens_style is also set, then addons, lens_type, and tints are returned.
+ The relevant configuration options for a given material. If lens_style is also given, 
 </ParamField>
 
 <ParamField body="lens_style" type="string">
@@ -24,46 +40,43 @@ description: "This endpoint fetches the options for a given lab."
 ### Response
 
 <ResponseField name="job_types" type="list of strings">
-  List of valid job_types. Returned if material and lens_style are NOT set.
+  List of valid job types.
 </ResponseField>
 
 <ResponseField name="materials" type="list of strings">
-  List of materials. Returned if material and lens_style are NOT set.
+  List of materials.
 </ResponseField> 
 
 <ResponseField name="suggested_values" type="dict">
-  Suggested values are set by the lab and used for display purposes as shortcuts. Returned if material and lens_style are NOT set.
+  Suggested values are set by the lab and used for our frontend purposes as shortcuts.
 </ResponseField> 
 
 <ResponseField name="services" type="list of strings">
-  List of available services. Returned if material and lens_style are NOT set.
+  List of available services.
 </ResponseField> 
 
 <ResponseField name="lens_styles" type="list of strings">
- List of valid lens_styles. Returned if material is set and lens_style is NOT set. 
+ List of valid lens styles.
 </ResponseField>
 
 <ResponseField name="lens_type" type="string">
- Lens type of the lens_style passed in. Returned if both material and lens_style are set.
+ Lens type of the `lens_style` passed in.
 </ResponseField>
 
 <ResponseField name="tints" type="list of strings">
  Valid tint combinations. Returned if both material and lens_style are set.
 </ResponseField>
 
-
 <ResponseField name="addons" type="object">
-
-Possible addons. Returned if both material and lens_style are set.
-
+Possible add-ons. Returned if both material and lens_style are set.
 <Expandable title="Addons">
 
 <ResponseField name="intrin_colors" type="list of strings">
-List of valid instrinsic property + color combos
+List of valid instrinsic property and color combos. Returned if both material and lens_style are set.
 </ResponseField>
 
 <ResponseField name="coats" type="list of strings">
- List of valid coatings.
+ List of valid coatings. Returned if both material and lens_style are set.
 </ResponseField>
 
 </Expandable>
