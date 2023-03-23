@@ -1,8 +1,11 @@
 ---
 title: "Get Token"
-api: "POST https://api.speccheckrx.com/v1/oauth/token"
 description: "This endpoints returns an access token."
 ---
+
+```
+POST https://api.speccheckrx.com/v1/oauth/token
+```
 
 ### Body
 
@@ -25,7 +28,7 @@ description: "This endpoints returns an access token."
 ```bash Example Request
 curl -H 'Content-Type: application/json' \
 -d '{"client_id":"your_client_id", "client_secret":"your_client_secret"}' \
--X POST https://api.specchecrx.com/v1/oauth/token
+-X POST https://api.speccheckrx.com/v1/oauth/token
 ```
 
 </RequestExample>

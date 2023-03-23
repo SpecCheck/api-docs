@@ -1,8 +1,10 @@
 ---
 title: "Create Order"
-api: "POST https://api.speccheckrx.com/v1/orders/create_order"
 description: "This endpoint creates an order"
 ---
+```
+POST https://api.speccheckrx.com/v1/orders/create_order
+```
 
 ### Body
 
@@ -10,7 +12,7 @@ description: "This endpoint creates an order"
 <Expandable title="order">
 
 <ParamField body="lab" type="string" required="true">
-  "Cherry Optical Lab"
+  `Cherry Optical Lab`
 </ParamField>
 
 <ParamField body="account_number" type="string" required="true">
@@ -20,15 +22,15 @@ description: "This endpoint creates an order"
 </ParamField>
 
 <ParamField body="orig_order_relation" type="string">
-  Only required for orders that are "Pair 50" or "Redo"
+  Valid options are: `Pair 50` or `Redo`
 </ParamField>
 
 <ParamField body="original_order_id" type="string">
-  Only required if orig_order_relation is set
+  Only required if `orig_order_relation` is set
 </ParamField>
 
 <ParamField body="redo_reason" type="string">
-  Only required if orig_order_relation is 'Redo'
+  Only required if `orig_order_relation` is `Redo`
 </ParamField>
 
 <ParamField body="first_name" type="string" required="true">
@@ -90,7 +92,7 @@ description: "This endpoint creates an order"
   </ParamField>
 
   <ParamField body="direction" type="string">
-    One of "D", "I", "O", "U"
+    One of `D`, `I`, `O`, `U`
   </ParamField>
 
 </Expandable>
@@ -103,7 +105,7 @@ description: "This endpoint creates an order"
   </ParamField>
 
   <ParamField body="direction" type="string">
-    One of "D", "I", "O", "U"
+    One of `D`, `I`, `O`, `U`
   </ParamField>
 
 </Expandable>
@@ -113,7 +115,7 @@ description: "This endpoint creates an order"
 </ParamField>
 
 <ParamField body="rx_right" type="RxEye">
-  See rx_left for RxEye schema
+  See rx_left for `RxEye` schema
 </ParamField>
 
 <ParamField body="lens" type="object">
@@ -153,7 +155,7 @@ The frame object
 <Expandable title="Frame">
 
 <ParamField body="job_type" type="string" required="true">
-  Frame handling option. Must be one of "N" for "Frame to Come", "S" for "Supply with Prescription", or "L" for "Lens Only".
+  Frame handling option. Must be one of `N` for "Frame to Come", `S` for "Supply with Prescription", or `L` for "Lens Only".
 </ParamField>
 
 <ParamField body="model" type="string" required="true">
@@ -169,7 +171,7 @@ The frame object
 </ParamField>
 
 <ParamField body="edge" type="string">
-    Frame Edge option. Must be one of "HB" for "Hide Bevel", "GD" for "Grooved", "D4" for "Rimless Drilled", or "SHLF" for "Step Bevel".
+    Frame Edge option. Must be one of `HB` for "Hide Bevel", `GD` for "Grooved", `D4` for "Rimless Drilled", or `SHLF` for "Step Bevel".
 </ParamField>
 
 <ParamField body="eye_size" type="int" required="true">
@@ -208,12 +210,12 @@ The frame object
 </Expandable>
 </ParamField>
 
-<ParamField body="force_reprocess" type="boolean">
-  Defaults to False. Mark true if you want to ignore the idempotency key check. This should not be set unless there is a legitimate reason.
+<ParamField body="force_reprocess" type="boolean" default="false">
+  Mark `true` if you want to ignore the idempotency key check. This should not be set unless there is a legitimate reason.
 </ParamField>
 
 <ParamField body="tracing" type="file">
-  The tracing file if applicable. Needs to be some sort of text file or .oma file.
+  The tracing file if applicable. Needs to be some sort of text file or `.oma` file.
 </ParamField>
 
 ### Response
@@ -223,7 +225,7 @@ The frame object
 </ResponseField>
 
 <ResponseField name="order_id" type="string">
-The SpecCheck order_id
+The SpecCheck `order_id`
 </ResponseField>
 
 <ResponseField name="is_idempotent_response" type="boolean">

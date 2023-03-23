@@ -2,8 +2,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "SpecCheck Documentation",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/dark.png",
+    "light": "/logo/light.png"
   },
   "favicon": "/favicon.png",
   "colors": {
@@ -13,7 +13,7 @@
   },
   "topbarLinks": [],
   "topbarCtaButton": {
-    "name": "SpecCheck",
+    "name": "Main Site",
     "url": "https://speccheckrx.com"
   },
   "anchors": [
@@ -37,6 +37,9 @@
       ]
     }
   ],
+  "api": {
+    "baseUrl": ["api-staging.speccheckrx.com", "api.speccheckrx.com"]
+  },
   "footerSocials": {
     "github": "https://github.com/SpecCheckrx",
     "linkedin": "https://www.linkedin.com/company/speccheck"
