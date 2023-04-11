@@ -38,7 +38,7 @@
     }
   ],
   "api": {
-    "baseUrl": ["api-staging.speccheckrx.com", "api.speccheckrx.com"],
+    "baseUrl": ["https://api-staging.speccheckrx.com", "https://api.speccheckrx.com"],
     "playground": {
       "mode": "hide"
     }
