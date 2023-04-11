@@ -38,13 +38,13 @@
     }
   ],
   "api": {
-    "baseUrl": ["api-staging.speccheckrx.com", "api.speccheckrx.com"]
+    "baseUrl": ["api-staging.speccheckrx.com", "api.speccheckrx.com"],
+    "playground": {
+      "mode": "hide"
+    }
   },
   "footerSocials": {
     "github": "https://github.com/SpecCheckrx",
     "linkedin": "https://www.linkedin.com/company/speccheck"
-  },
-  "api": {
-    "hidePlayground": true
-}
+  }
 }
