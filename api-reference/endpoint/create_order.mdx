@@ -3,8 +3,10 @@ title: "Create Order"
 description: "This endpoint creates an order"
 ---
 ```
-POST https://api.speccheckrx.com/v1/orders/create_order
+POST https://api.speccheckrx.com/v1/orders
 ```
+
+<Note>The endpoint will return 200 if the response is an idempotent response, else it will return 201 for a successfully created order.</Note>
 
 ### Body
 
@@ -220,18 +222,195 @@ The frame object
 
 ### Response
 
-<ResponseField name="success" type="boolean">
-  Indicates whether the call was successful.
+<ResponseField name="order" type="object">
+
+<Expandable title="order">
+
+  <ResponseField name="lab_office_id" type="string">
+  </ResponseField>
+  <ResponseField name="id" type="string">
+  </ResponseField>
+  <ResponseField name="lms" type="string">
+  </ResponseField>
+  <ResponseField name="lab_status" type="string">
+  </ResponseField>
+  <ResponseField name="created_at" type="datetime">
+  </ResponseField>
+  <ResponseField name="lms_order_id" type="string">
+  </ResponseField>
+  <ResponseField name="is_spec_order" type="boolean">
+  </ResponseField>
+  <ResponseField name="updated_at" type="datetime">
+  </ResponseField>
+  <ResponseField name="tray_num" type="string">
+  </ResponseField>
+  <ResponseField name="est_ship_at" type="datetime">
+  </ResponseField>
+  <ResponseField name="invoice_id" type="string">
+  </ResponseField>
+  <ResponseField name="lab_updated_at" type="datetime">
+  </ResponseField>
+  <ResponseField name="lab" type="string">
+  </ResponseField>
+  <ResponseField name="account_number" type="string">
+  </ResponseField>
+  <ResponseField name="job_type" type="string">
+  </ResponseField>
+  <ResponseField name="orig_order_relation" type="string">
+  </ResponseField>
+  <ResponseField name="original_order_id" type="string">
+  </ResponseField>
+  <ResponseField name="first_name" type="string">
+  </ResponseField>
+  <ResponseField name="last_name" type="string">
+  </ResponseField>
+  <ResponseField name="email" type="string">
+  </ResponseField>
+  <ResponseField name="services" type="list of strings">
+  </ResponseField>
+  <ResponseField name="special_instructions" type="string">
+  </ResponseField>
+
+<ResponseField name="rx_left" type="rx_eye">
+<Expandable title="rx_eye">
+  <ResponseField name="sphere" type="float">
+  </ResponseField>
+  <ResponseField name="pd" type="float">
+  </ResponseField>
+  <ResponseField name="cylinder" type="float">
+  </ResponseField>
+  <ResponseField name="axis" type="int">
+  </ResponseField>
+  <ResponseField name="near_pd" type="float">
+  </ResponseField>
+  <ResponseField name="addition" type="float">
+  </ResponseField>
+  <ResponseField name="seg_height" type="float">
+  </ResponseField>
+  <ResponseField name="optical_center_height" type="int">
+  </ResponseField>
+  <ResponseField name="io_prism" type="prism">
+  <Expandable title="Prism">
+  <ResponseField name="power" type="float">
+  </ResponseField>
+  <ResponseField name="direction" type="string">
+    One of `D`, `I`, `O`, `U`
+  </ResponseField>
+  </Expandable>
+  </ResponseField>
+  <ResponseField name="ud_prism" type="prism">
+  <Expandable title="Prism">
+  <ResponseField name="power" type="float">
+  </ResponseField>
+  <ResponseField name="direction" type="string">
+    One of `D`, `I`, `O`, `U`
+  </ResponseField>
+  </Expandable>
+  </ResponseField>
+</Expandable>
 </ResponseField>
 
-<ResponseField name="order_id" type="string">
-The SpecCheck `order_id`
+
+<ResponseField name="rx_right" type="rx_eye">
+<Expandable title="rx_eye">
+  <ResponseField name="sphere" type="float">
+  </ResponseField>
+  <ResponseField name="pd" type="float">
+  </ResponseField>
+  <ResponseField name="cylinder" type="float">
+  </ResponseField>
+  <ResponseField name="axis" type="int">
+  </ResponseField>
+  <ResponseField name="near_pd" type="float">
+  </ResponseField>
+  <ResponseField name="addition" type="float">
+  </ResponseField>
+  <ResponseField name="seg_height" type="float">
+  </ResponseField>
+  <ResponseField name="optical_center_height" type="int">
+  </ResponseField>
+  <ResponseField name="io_prism" type="prism">
+  <Expandable title="Prism">
+  <ResponseField name="power" type="float">
+  </ResponseField>
+  <ResponseField name="direction" type="string">
+    One of `D`, `I`, `O`, `U`
+  </ResponseField>
+  </Expandable>
+  </ResponseField>
+  <ResponseField name="ud_prism" type="prism">
+  <Expandable title="Prism">
+  <ResponseField name="power" type="float">
+  </ResponseField>
+  <ResponseField name="direction" type="string">
+    One of `D`, `I`, `O`, `U`
+  </ResponseField>
+  </Expandable>
+  </ResponseField>
+</Expandable>
 </ResponseField>
 
-<ResponseField name="is_idempotent_response" type="boolean">
-True if this was an idempotent response.
+
+<ResponseField name="lens" type="lens">
+<Expandable title="lens">
+  <ResponseField name="material" type="string">
+  </ResponseField>
+  <ResponseField name="style" type="string">
+  </ResponseField>
+  <ResponseField name="base_curve" type="float">
+  </ResponseField>
+  <ResponseField name="intrin_color" type="string">
+  </ResponseField>
+  <ResponseField name="coats" type="list of strings">
+  </ResponseField>
+  <ResponseField name="tint" type="string">
+  </ResponseField>
+  <ResponseField name="tint_instruction" type="string">
+  </ResponseField>
+</Expandable>
 </ResponseField>
 
-<ResponseField name="error" type="string">
-Error message if applicable.
-</ResponseField> 
+
+
+<ResponseField name="frame" type="frame">
+<Expandable title="frame">
+  <ResponseField name="job_type" type="string">
+  </ResponseField>
+  <ResponseField name="model" type="string">
+  </ResponseField>
+  <ResponseField name="sku" type="string">
+  </ResponseField>
+  <ResponseField name="manufacturer" type="string">
+  </ResponseField>
+  <ResponseField name="material" type="string">
+  </ResponseField>
+  <ResponseField name="edge" type="string">
+  </ResponseField>
+  <ResponseField name="eye_size" type="int">
+  </ResponseField>
+  <ResponseField name="bridge" type="int">
+  </ResponseField>
+  <ResponseField name="color" type="string">
+  </ResponseField>
+  <ResponseField name="temple" type="int">
+  </ResponseField>
+  <ResponseField name="lens_ed" type="float">
+  </ResponseField>
+  <ResponseField name="a" type="float">
+  </ResponseField>
+  <ResponseField name="b" type="float">
+  </ResponseField>
+  <ResponseField name="vertex" type="float">
+  </ResponseField>
+  <ResponseField name="pantoscopic_tilt" type="int">
+  </ResponseField>
+  <ResponseField name="wrap" type="int">
+  </ResponseField>
+  <ResponseField name="tracing_file_link" type="str">
+  </ResponseField>
+</Expandable>
+</ResponseField>
+
+
+</Expandable>
+</ResponseField>
