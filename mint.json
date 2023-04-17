@@ -26,19 +26,25 @@
   "navigation": [
     {
       "group": "Home",
-      "pages": ["introduction"]
+      "pages": [
+        "introduction"
+      ]
     },
     {
       "group": "Endpoints",
       "pages": [
         "api-reference/endpoint/get_token",
         "api-reference/endpoint/create_order",
-        "api-reference/endpoint/get_options"
+        "api-reference/endpoint/get_options",
+        "api-reference/endpoint/get_payments"
       ]
     }
   ],
   "api": {
-    "baseUrl": ["https://api-staging.speccheckrx.com", "https://api.speccheckrx.com"],
+    "baseUrl": [
+      "https://api-staging.speccheckrx.com",
+      "https://api.speccheckrx.com"
+    ],
     "playground": {
       "mode": "hide"
     }
