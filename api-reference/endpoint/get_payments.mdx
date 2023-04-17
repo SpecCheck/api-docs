@@ -18,11 +18,11 @@ GET https://api.speccheckrx.com/v1/payments
 </ParamField>
 
 <ParamField body="start_date" type="string" required="true">
-  The date to return payments from.
+  ISO formatted date to return payments from, example: `2023-04-01T00:00:00+0000`.
 </ParamField>
 
 <ParamField body="end_date" type="string" required="true">
-  The date to return payments up to.
+  ISO formatted date to return payments up to, example: `2023-04-15T00:00:00+0000`.
 </ParamField>
 
 ### Response
