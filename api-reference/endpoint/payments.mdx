@@ -27,14 +27,14 @@ POST https://api.speccheckrx.com/v1/payments
 
 ### Response
 
-<ResponseField name="Charges" type="list of Charge Object">
-  <Expandable title="properties">
+<ResponseField name="charges" type="list of Charge Object">
+  <Expandable title="Charge">
     <ResponseField name="account_number" type="string">
       The lab account number of the ECP who made this payment.
     </ResponseField>
 
     <ResponseField name="amount" type="float">
-      The amount of the payment.
+      The amount of the payment in major units.
     </ResponseField>
 
     <ResponseField name="created_at" type="string">
