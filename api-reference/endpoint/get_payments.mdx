@@ -52,9 +52,11 @@ GET https://api.speccheckrx.com/v1/payments
 <RequestExample>
 
 ```bash Example Request
-curl -G -H 'Authorization: bearer your_bearer_token' -H 'Client-Id: your_client_id' \
---data-urlencode start_date="2023-04-01T00:00:00+0000" --data-urlencode end_date="2023-04-17T23:59:59+0000" \
---data lms="DVIRx" --data lms_lab_id="1057148" 'https://api.speccheckrx.com/v1/payments'
+curl -G -H 'Authorization: bearer your_bearer_token' \
+--data lms="DVIRx" --data lms_lab_id="1057148" \
+--data-urlencode start_date="2023-04-01T00:00:00+0000" \
+--data-urlencode end_date="2023-04-17T23:59:59+0000" \
+'https://api.speccheckrx.com/v1/payments'
 ```
 
 </RequestExample>
