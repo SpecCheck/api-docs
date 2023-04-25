@@ -17,12 +17,12 @@ GET https://api.speccheckrx.com/v1/payments
   The LMS lab ID.
 </ParamField>
 
-<ParamField body="start_date" type="string" required="true">
-  ISO formatted date to return payments from, example: `2023-04-01T00:00:00+0000`.
+<ParamField body="created_start" type="string" required="true">
+  A string with an integer Unix timestamp to return payments from.
 </ParamField>
 
-<ParamField body="end_date" type="string" required="true">
-  ISO formatted date to return payments up to, example: `2023-04-15T00:00:00+0000`.
+<ParamField body="created_end" type="string" required="true">
+  A string with an integer Unix timestamp to return payments up to.
 </ParamField>
 
 ### Response
@@ -33,7 +33,7 @@ GET https://api.speccheckrx.com/v1/payments
       The lab account number of the ECP who made this payment.
     </ResponseField>
 
-    <ResponseField name="amount_captured" type="float">
+    <ResponseField name="amount_captured" type="int">
       The amount captured for the payment in minor units.
     </ResponseField>
 
@@ -44,8 +44,8 @@ GET https://api.speccheckrx.com/v1/payments
     <ResponseField name="payment_method_details" type="Payment Method Details Object">
       <Expandable title="Payment Method Details">
           <ResponseField name="type" type="string">
-      The type of payment method used, example: `card`
-    </ResponseField>
+           The type of payment method used, example: `card`
+          </ResponseField>
       </Expandable>
   </Expandable>
 </ResponseField>
