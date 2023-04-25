@@ -29,22 +29,24 @@ GET https://api.speccheckrx.com/v1/payments
 
 <ResponseField name="charges" type="list of Charge Object">
   <Expandable title="Charge">
-    <ResponseField name="account_number" type="string">
+    <ResponseField name="lab_account_number" type="string">
       The lab account number of the ECP who made this payment.
     </ResponseField>
 
-    <ResponseField name="amount" type="float">
-      The amount of the payment in major units.
+    <ResponseField name="amount_captured" type="float">
+      The amount captured for the payment in minor units.
     </ResponseField>
 
-    <ResponseField name="created_at" type="string">
-      ISO formatted date string of when the payment was made.
+    <ResponseField name="created" type="int">
+      Time at which the charge was created. Measured in seconds since the Unix epoch.
     </ResponseField>
 
-    <ResponseField name="payment_method" type="string">
+    <ResponseField name="payment_method_details" type="Payment Method Details Object">
+      <Expandable title="Payment Method Details">
+          <ResponseField name="type" type="string">
       The type of payment method used, example: `card`
     </ResponseField>
-
+      </Expandable>
   </Expandable>
 </ResponseField>
 
