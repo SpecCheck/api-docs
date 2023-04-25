@@ -9,42 +9,41 @@ GET https://api.speccheckrx.com/v1/payments
 
 ### Body
 
-<ParamField body="lms" type="string" required="true">
-  The name of the LMS.
-</ParamField>
-
 <ParamField body="lms_lab_id" type="string" required="true">
   The LMS lab ID.
 </ParamField>
 
-<ParamField body="start_date" type="string" required="true">
-  ISO formatted date to return payments from, example: `2023-04-01T00:00:00+0000`.
+<ParamField body="created_start" type="string" required="true">
+  A string with an integer Unix timestamp to return payments from.
 </ParamField>
 
-<ParamField body="end_date" type="string" required="true">
-  ISO formatted date to return payments up to, example: `2023-04-15T00:00:00+0000`.
+<ParamField body="created_end" type="string" required="true">
+  A string with an integer Unix timestamp to return payments up to.
 </ParamField>
 
 ### Response
 
 <ResponseField name="charges" type="list of Charge Object">
   <Expandable title="Charge">
-    <ResponseField name="account_number" type="string">
+    <ResponseField name="lab_account_number" type="string">
       The lab account number of the ECP who made this payment.
     </ResponseField>
 
-    <ResponseField name="amount" type="float">
-      The amount of the payment in major units.
+    <ResponseField name="amount_captured" type="int">
+      The amount captured for the payment in major units.
     </ResponseField>
 
-    <ResponseField name="created_at" type="string">
-      ISO formatted date string of when the payment was made.
+    <ResponseField name="created" type="int">
+      Time at which the charge was created. Measured in seconds since the Unix epoch.
     </ResponseField>
 
-    <ResponseField name="payment_method" type="string">
-      The type of payment method used, example: `card`
-    </ResponseField>
-
+    <ResponseField name="payment_method_details" type="Payment Method Details Object">
+      <Expandable title="Payment Method Details">
+          <ResponseField name="type" type="string">
+           The type of payment method used, example: `card`
+          </ResponseField>
+      </Expandable>
+   </ResponseField>
   </Expandable>
 </ResponseField>
 
@@ -53,9 +52,9 @@ GET https://api.speccheckrx.com/v1/payments
 
 ```bash Example Request
 curl -G -H 'Authorization: bearer your_bearer_token' \
---data lms="DVIRx" --data lms_lab_id="1057148" \
---data-urlencode start_date="2023-04-01T00:00:00+0000" \
---data-urlencode end_date="2023-04-17T23:59:59+0000" \
+--data lms_lab_id="1057148" \
+--data created_start="1682444590" \
+--data created_end="1682444596" \
 'https://api.speccheckrx.com/v1/payments'
 ```
 
